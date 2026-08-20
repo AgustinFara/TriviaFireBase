@@ -12,6 +12,11 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v4
 
+        # Paso para generar el archivo desde los Secrets
+      - name: Crear firebase-config.js
+        run: |
+          echo "${{ secrets.FIREBASE_CONFIG_JS }}" > firebase-config.js
+
       - name: Deploy a Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
